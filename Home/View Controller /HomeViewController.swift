@@ -14,6 +14,7 @@ class HomeViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(HomePostCell.self, forCellReuseIdentifier: "HomePostCell")
+        tableView.register(HomeStoryCell.self, forCellReuseIdentifier: "HomeStoryCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
@@ -21,12 +22,6 @@ class HomeViewController: UIViewController {
     
 
     private var posts: [PostModel] = [
-        PostModel(profile: "profile1", name: "Dara", hour: "2h", description: "Lorem Ipsum text is commonly used as placeholder text in design and typesetting to fill in spaces and demonstrate the layout of a document or a web page. ", imagePosting: "posting1", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "100K+",commentAmount: "10K comments", shareAmount: "999 shares"),
-        PostModel(profile: "profile2", name: "Bopha", hour: "1h", description: "Are you looking for [describe the benefit or unique selling point of the position/item/event]? Look no further! We are thrilled to present [Company/Organization/Event Name], where [briefly describe what the company/organization/event does or offers].", imagePosting: "posting2", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "200K+", commentAmount: "20K comments", shareAmount: "168 shares"),
-        PostModel(profile: "profile1", name: "Dara", hour: "2h", description: "Lorem Ipsum text is commonly used as placeholder text in design and typesetting to fill in spaces and demonstrate the layout of a document or a web page. ", imagePosting: "posting1", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "100K+",commentAmount: "10K comments", shareAmount: "999 shares"),
-        PostModel(profile: "profile2", name: "Bopha", hour: "1h", description: "Are you looking for [describe the benefit or unique selling point of the position/item/event]? Look no further! We are thrilled to present [Company/Organization/Event Name], where [briefly describe what the company/organization/event does or offers].", imagePosting: "posting2", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "200K+", commentAmount: "20K comments", shareAmount: "168 shares"),
-        PostModel(profile: "profile1", name: "Dara", hour: "2h", description: "Lorem Ipsum text is commonly used as placeholder text in design and typesetting to fill in spaces and demonstrate the layout of a document or a web page. ", imagePosting: "posting1", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "100K+",commentAmount: "10K comments", shareAmount: "999 shares"),
-        PostModel(profile: "profile2", name: "Bopha", hour: "1h", description: "Are you looking for [describe the benefit or unique selling point of the position/item/event]? Look no further! We are thrilled to present [Company/Organization/Event Name], where [briefly describe what the company/organization/event does or offers].", imagePosting: "posting2", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "200K+", commentAmount: "20K comments", shareAmount: "168 shares"),
         PostModel(profile: "profile1", name: "Dara", hour: "2h", description: "Lorem Ipsum text is commonly used as placeholder text in design and typesetting to fill in spaces and demonstrate the layout of a document or a web page. ", imagePosting: "posting1", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "100K+",commentAmount: "10K comments", shareAmount: "999 shares"),
         PostModel(profile: "profile2", name: "Bopha", hour: "1h", description: "Are you looking for [describe the benefit or unique selling point of the position/item/event]? Look no further! We are thrilled to present [Company/Organization/Event Name], where [briefly describe what the company/organization/event does or offers].", imagePosting: "posting2", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "200K+", commentAmount: "20K comments", shareAmount: "168 shares"),
     ]
@@ -64,16 +59,24 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        return posts.count + 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard indexPath.row != 0 else {
+            return 150
+        }
         return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard indexPath.row != 0 else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeStoryCell", for: indexPath) as! HomeStoryCell
+            return cell
+        }
+                
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomePostCell", for: indexPath) as! HomePostCell
-        let post = posts[indexPath.row]
+        let post = posts[indexPath.row - 1]
         cell.profileImageView.image = UIImage(named: post.profile)
         cell.nameLabel.text = post.name
         cell.hourLabel.text = post.hour
@@ -90,3 +93,5 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
+
+
