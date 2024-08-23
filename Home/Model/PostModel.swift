@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct PostModel {
     let profile: String
     let name: String
@@ -18,4 +19,14 @@ struct PostModel {
     let totalLike: String
     let commentAmount: String
     let shareAmount: String
+}
+
+struct PostStoryModel{
+    let profile : String
+}
+
+struct userStoryModel {
+    let profile: String
+    let name: String
+    let photo: String
 }

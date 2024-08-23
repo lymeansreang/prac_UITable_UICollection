@@ -19,9 +19,14 @@ class HomeViewController: UIViewController {
         return tableView
     }()
     
-    
 
     private var posts: [PostModel] = [
+        PostModel(profile: "profile1", name: "Dara", hour: "2h", description: "Lorem Ipsum text is commonly used as placeholder text in design and typesetting to fill in spaces and demonstrate the layout of a document or a web page. ", imagePosting: "posting1", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "100K+",commentAmount: "10K comments", shareAmount: "999 shares"),
+        PostModel(profile: "profile2", name: "Bopha", hour: "1h", description: "Are you looking for [describe the benefit or unique selling point of the position/item/event]? Look no further! We are thrilled to present [Company/Organization/Event Name], where [briefly describe what the company/organization/event does or offers].", imagePosting: "posting2", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "200K+", commentAmount: "20K comments", shareAmount: "168 shares"),
+        PostModel(profile: "profile1", name: "Dara", hour: "2h", description: "Lorem Ipsum text is commonly used as placeholder text in design and typesetting to fill in spaces and demonstrate the layout of a document or a web page. ", imagePosting: "posting1", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "100K+",commentAmount: "10K comments", shareAmount: "999 shares"),
+        PostModel(profile: "profile2", name: "Bopha", hour: "1h", description: "Are you looking for [describe the benefit or unique selling point of the position/item/event]? Look no further! We are thrilled to present [Company/Organization/Event Name], where [briefly describe what the company/organization/event does or offers].", imagePosting: "posting2", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "200K+", commentAmount: "20K comments", shareAmount: "168 shares"),
+        PostModel(profile: "profile1", name: "Dara", hour: "2h", description: "Lorem Ipsum text is commonly used as placeholder text in design and typesetting to fill in spaces and demonstrate the layout of a document or a web page. ", imagePosting: "posting1", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "100K+",commentAmount: "10K comments", shareAmount: "999 shares"),
+        PostModel(profile: "profile2", name: "Bopha", hour: "1h", description: "Are you looking for [describe the benefit or unique selling point of the position/item/event]? Look no further! We are thrilled to present [Company/Organization/Event Name], where [briefly describe what the company/organization/event does or offers].", imagePosting: "posting2", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "200K+", commentAmount: "20K comments", shareAmount: "168 shares"),
         PostModel(profile: "profile1", name: "Dara", hour: "2h", description: "Lorem Ipsum text is commonly used as placeholder text in design and typesetting to fill in spaces and demonstrate the layout of a document or a web page. ", imagePosting: "posting1", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "100K+",commentAmount: "10K comments", shareAmount: "999 shares"),
         PostModel(profile: "profile2", name: "Bopha", hour: "1h", description: "Are you looking for [describe the benefit or unique selling point of the position/item/event]? Look no further! We are thrilled to present [Company/Organization/Event Name], where [briefly describe what the company/organization/event does or offers].", imagePosting: "posting2", emojiLike: "likeEmoji", emojiLove: "loveEmoji", emojiHappy: "happyEmoji", totalLike: "200K+", commentAmount: "20K comments", shareAmount: "168 shares"),
     ]
@@ -30,7 +35,7 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupView()
-        
+    
         navigationItem.title = "Muk Seavphov"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.circle.fill"), style: .plain, target: self, action: #selector(didTapButton))
         
@@ -64,7 +69,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard indexPath.row != 0 else {
-            return 150
+            return 250
         }
         return UITableView.automaticDimension
     }
